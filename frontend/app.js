@@ -1,5 +1,4 @@
-const API = "https://your-render-url.onrender.com/defects";
-
+const API = "https://road-defect-system-1.onrender.com/defects";
 const map = L.map('map').setView([12.97, 77.59], 13);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
