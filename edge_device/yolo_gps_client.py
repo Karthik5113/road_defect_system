@@ -10,7 +10,7 @@ from ultralytics import YOLO
 import requests
 
 # ================= YOLO MODEL =================
-model = YOLO("C:\Users\TG68\OneDrive\Desktop\road_defect_system\edge_device\best.pt")
+model = YOLO(r"C:\Users\TG68\OneDrive\Desktop\road_defect_system\edge_device\best.pt")
 
 # ================= CAMERA =====================
 cap = cv2.VideoCapture(0)
