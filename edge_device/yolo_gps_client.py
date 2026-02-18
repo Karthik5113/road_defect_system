@@ -7,6 +7,7 @@ import time
 import math
 from datetime import datetime
 from ultralytics import YOLO
+import requests
 
 # ================= YOLO MODEL =================
 model = YOLO("best.pt")
@@ -143,6 +144,20 @@ def main():
                             cls_name,
                             round(conf, 2)
                         ])
+
+                        data = {
+                            "defect_type": cls_name,
+                            "latitude": latitude,
+                            "longitude": longitude,
+                            "confidence": conf,
+                            "date": date_str,
+                            "time": time_str
+                        }
+
+                        try:
+                            requests.post(API_URL, json=data, timeout=2)
+                        except:
+                            print("⚠️ Cloud upload failed")
 
         cv2.imshow("Laptop YOLO + Mobile GPS Test", annotated)
 
