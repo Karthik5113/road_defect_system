@@ -24,6 +24,8 @@ longitude = None
 date_str = None
 time_str = None
 
+API_URL = "https://road-defect-system-1.onrender.com/upload"
+
 # ================= CSV ========================
 CSV_FILE = "laptop_test_gps.csv"
 
@@ -155,9 +157,10 @@ def main():
                         }
 
                         try:
-                            requests.post(API_URL, json=data, timeout=2)
-                        except:
-                            print("⚠️ Cloud upload failed")
+                            response = requests.post(API_URL, json=data, timeout=5)
+                            print("UPLOAD STATUS:", response.status_code, response.text)
+                        except Exception as e:
+                            print("UPLOAD FAILED:", e)
 
         cv2.imshow("Laptop YOLO + Mobile GPS Test", annotated)
 
